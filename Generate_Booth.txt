@@ -1,0 +1,19 @@
+Generating DFG:
+1.	Change booth source and TCL
+2.	Run: hector -debug 2
+3.	In other terminal: cd /debug
+4.	~/booth_radix4_mult/debug>    cp ../SCV_WORK/MP_working_dir_<some number>/dfgs/seg1.dfg SCV_WORK/
+5.	Run: hector -debug 2 -script run.tcl
+6.	Inside SCV_WORK you will find bitdfg.dfg
+7.	Then follow Himanshu’s instruction to convert DFG to Verilog
+
+Converting:
+In different directory,
+1.	hector -debug 2
+2.	readdfg /remote/us01home56/tiankas/booth_radix4_mult/debug/SCV_WORK/bitdfg.dfg -nowork
+(it has to be the absolute directory, you should get a "1")
+3.	writeverilog -module DFG2RTL -override booth_radix4_8.v
+(you can also do statsdfg  # to see what operations are present in DFG. you should get a "1")
+4.	cp /remote/vgsource11/tiankas/clients/client_hector_1/Source/scv/release/tutorial
+
+read_library mylibrary.lib;map;write 
